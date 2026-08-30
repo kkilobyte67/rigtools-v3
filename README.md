@@ -1,4 +1,7 @@
-# rigtools-v3
+# Rigtools-v3
+
+Rigtools
+Extension/Devtools code execution
 
 ## How to use
 ```sh
