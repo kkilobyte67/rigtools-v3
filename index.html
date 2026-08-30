@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Dev Workspace</title>
+    <style>
+        body { font-family: monospace; background: #1e1e1e; color: #00ff00; padding: 20px; }
+        .panel { border: 1px solid #444; padding: 15px; margin-bottom: 10px; background: #111; }
+        input, button, textarea { background: #222; color: #00ff00; border: 1px solid #00ff00; padding: 5px; font-family: monospace; }
+        textarea { width: 100%; height: 100px; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Extension Development Workspace</h1>
+    
+    <div class="panel">
+        <h3>Target Target Details</h3>
+        <label>Extension ID: </label>
+        <input type="text" id="extId" placeholder="e.g., jmpeofm..."><br><br>
+        <button onclick="connectSocket()">Establish Stream</button>
+        <span id="status" style="color: yellow;">Disconnected</span>
+    </div>
+
+    <div class="panel">
+        <h3>Console Script Dispatch</h3>
+        <textarea id="payload" placeholder="console.log('Context evaluation test');"></textarea>
+        <button onclick="sendPayload()">Dispatch Execution</button>
+    </div>
+
+    <script>
+        let socket;
+
+        function connectSocket() {
+            socket = new WebSocket('ws://localhost:8080');
+            
+            socket.onopen = () => {
+                document.getElementById('status').innerText = 'Connected';
+                document.getElementById('status').style.color = '#00ff00';
+            };
+
+            socket.onclose = () => {
+                document.getElementById('status').innerText = 'Disconnected';
+                document.getElementById('status').style.color = 'red';
+            };
+        }
+
+        function sendPayload() {
+            const data = {
+                targetId: document.getElementById('extId').value,
+                code: document.getElementById('payload').value
+            };
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify(data));
+                alert('Payload dispatched over WebSocket stream.');
+            } else {
+                alert('Establish socket connection first.');
+            }
+        }
+    </script>
+</body>
+</html>
