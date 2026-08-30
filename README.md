@@ -39,4 +39,4 @@ $ npm start
 
 ## and if anything doesn't work Please feel free to contact me my via discord:
 
-# https://discord.com/users/1475600405164593162
+[My discord]( https://discord.com/users/1475600405164593162)
