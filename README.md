@@ -33,3 +33,7 @@ $ npm start
     - Chrome url debugging.
 - Release 2.0.0
     - Added parts of the re-enrollment toolkit
+
+## and if anything doesn't work Please feel free to contact me my via discord:
+
+# https://discord.com/users/1475600405164593162
