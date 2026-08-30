@@ -1,0 +1,1 @@
+{ "name": "devtools-code-execution", "version": "1.0.0", "description": "Custom extension web interface and WebSocket bridge", "main": "server.js", "type": "module", "scripts": { "start": "node server.js" }, "dependencies": { "ws": "^8.18.0" } }
